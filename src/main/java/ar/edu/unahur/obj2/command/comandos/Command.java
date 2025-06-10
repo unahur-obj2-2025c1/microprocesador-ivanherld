@@ -4,18 +4,18 @@ import ar.edu.unahur.obj2.command.Programable;
 
 public abstract class Command implements Operable {
 
+    Programable microUndo;
+
     @Override
     public void execute(Programable micro) {
-        // TODO Auto-generated method stub
+        microUndo = micro.copy();
         doExecute(micro);
         micro.incProgramCounter();
-        
     }
 
     @Override
     public void undo(Programable micro) {
-        // TODO Auto-generated method stub
-        
+        micro.copyFrom(microUndo);
     }
 
     // Claro el public abstract tiene los override de la interface concretos, porque es comun a TODOS los comandos

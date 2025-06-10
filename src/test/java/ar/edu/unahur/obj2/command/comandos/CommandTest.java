@@ -10,30 +10,30 @@ import ar.edu.unahur.obj2.command.ProgramBuilder;
 import ar.edu.unahur.obj2.command.Programable;
 
 public class CommandTest {
-    // Programable programable = new Microprocesador();
+    Programable programable = new Microprocesador(0,0,0);
 
-    // @BeforeEach
-    // void setUp() {
-    //     programable.reset();
-    // }
+    @BeforeEach
+    void setUp() {
+        programable.reset();
+    }
 
-    // @Test
-    // void testExecute() {
-    //     Operable lodv20 = new LoadV(20);
-    //     Operable swap = new Swap();
-    //     Operable lodv17 = new LoadV(17);
-    //     Operable suma = new Add();
+    @Test
+    void testExecute() {
+        Operable lodv20 = new LoadV(20);
+        Operable swap = new Swap();
+        Operable lodv17 = new LoadV(17);
+        Operable suma = new Add();
 
-    //     lodv20.execute(programable);
-    //     swap.execute(programable);
-    //     lodv17.execute(programable);
-    //     suma.execute(programable);
-    //     suma.undo(programable);
+        lodv20.execute(programable);
+        swap.execute(programable);
+        lodv17.execute(programable);
+        suma.execute(programable);
+        suma.undo(programable);
 
-    //     assertEquals(37, programable.getAcumuladorA());
-    //     assertEquals(0, programable.getAcumuladorB());
-    //     assertEquals(4, programable.getProgramCounter());
-    // }
+        assertEquals(17, programable.getAcumuladorA());
+        assertEquals(20, programable.getAcumuladorB());
+        assertEquals(3, programable.getProgramCounter());
+    }
 
      @Test
     void alBuildearUnProgramaConInstruccionesSimples_CuandoSeLoPasamosAUnMicrocontrolador_FuncionaCorrectamente() {
@@ -56,4 +56,16 @@ public class CommandTest {
         assertEquals(0, programable.getAcumuladorB());
         assertEquals(9, programable.getProgramCounter());
     }
+
+     @Test
+     void testDoExecute() {
+        
+     }
+
+   
+
+     @Test
+     void testUndo() {
+     
+     }
 }

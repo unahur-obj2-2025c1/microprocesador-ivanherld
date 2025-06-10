@@ -1,6 +1,7 @@
 package ar.edu.unahur.obj2.command;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import ar.edu.unahur.obj2.command.comandos.Operable;
@@ -11,20 +12,24 @@ public class Microprocesador implements Programable {
     private Integer acumuladorA = 0;
     private Integer acumuladorB = 0;
     private Integer programCounter = 0;
-    private List<Integer> memoriaDatos = new ArrayList<>(1024);
+    List<Integer> memoriaDatos = Arrays.asList(new Integer[1024]);
 
-
+    public Microprocesador(Integer acumuladorA, Integer acumuladorB, Integer programCounter){
+        this.acumuladorA = acumuladorA;
+        this.acumuladorB = acumuladorB;
+        this.programCounter = programCounter;
+    }
 
     @Override
     public Programable copy() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Microprocesador(this.acumuladorA, this.acumuladorB, this.programCounter);
     }
 
     @Override
     public void copyFrom(Programable programable) {
-        // TODO Auto-generated method stub
-        
+        this.acumuladorA = programable.getAcumuladorA();
+        this.acumuladorB = programable.getAcumuladorB();
+        this.programCounter = programable.getProgramCounter();
     }
 
     @Override
@@ -58,7 +63,7 @@ public class Microprocesador implements Programable {
         this.acumuladorA = 0;
         this.acumuladorB = 0;
         this.programCounter = 0;
-        memoriaDatos = new ArrayList<>(1024);
+        memoriaDatos = Arrays.asList(new Integer[1024]);
         
     }
 
